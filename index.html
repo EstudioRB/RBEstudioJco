@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RB Estudio Jurídico — ¿Podés iniciar un amparo?</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --dark-teal: #1f6b6b;
+    --mid-teal: #2a8a8a;
+    --light-teal: #5bbfbf;
+    --pale-teal: #e8f5f5;
+    --white: #ffffff;
+    --gray: #4a5568;
+    --light-gray: #f7fafa;
+    --text: #1a2e2e;
+    --border: #c8e6e6;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'DM Sans', sans-serif; background: var(--light-gray); color: var(--text); min-height: 100vh; }
+  header { background: var(--white); border-bottom: 1px solid var(--border); padding: 20px 40px; display: flex; align-items: center; gap: 16px; }
+  .logo-block { display: flex; align-items: center; gap: 12px; }
+  .logo-icon { width: 48px; height: 48px; background: var(--dark-teal); border-radius: 6px; display: flex; align-items: center; justify-content: center; font-family: 'Playfair Display', serif; color: white; font-size: 18px; font-weight: 700; letter-spacing: -1px; position: relative; }
+  .logo-icon::after { content: ''; position: absolute; right: -4px; top: 4px; width: 20px; height: 20px; background: var(--light-teal); border-radius: 3px; }
+  .logo-text { display: flex; flex-direction: column; }
+  .logo-text strong { font-family: 'Playfair Display', serif; font-size: 20px; color: var(--dark-teal); letter-spacing: 1px; }
+  .logo-text span { font-size: 10px; letter-spacing: 3px; color: var(--gray); text-transform: uppercase; font-weight: 500; }
+  .hero { background: linear-gradient(135deg, var(--dark-teal) 0%, var(--mid-teal) 60%, var(--light-teal) 100%); padding: 60px 40px; text-align: center; color: white; position: relative; overflow: hidden; }
+  .hero::before { content: ''; position: absolute; top: -60px; right: -60px; width: 300px; height: 300px; border-radius: 50%; background: rgba(255,255,255,0.05); }
+  .hero::after { content: ''; position: absolute; bottom: -80px; left: -40px; width: 250px; height: 250px; border-radius: 50%; background: rgba(255,255,255,0.04); }
+  .hero h1 { font-family: 'Playfair Display', serif; font-size: 2.4rem; font-weight: 700; margin-bottom: 16px; line-height: 1.2; position: relative; z-index: 1; }
+  .hero p { font-size: 1.05rem; opacity: 0.88; max-width: 560px; margin: 0 auto; font-weight: 300; line-height: 1.6; position: relative; z-index: 1; }
+  .container { max-width: 720px; margin: 0 auto; padding: 40px 20px 80px; }
+  .progress-wrap { margin-bottom: 32px; }
+  .progress-label { display: flex; justify-content: space-between; font-size: 13px; color: var(--gray); margin-bottom: 8px; font-weight: 500; }
+  .progress-bar { height: 6px; background: var(--border); border-radius: 10px; overflow: hidden; }
+  .progress-fill { height: 100%; background: linear-gradient(90deg, var(--dark-teal), var(--light-teal)); border-radius: 10px; transition: width 0.5s ease; }
+  .card { background: white; border-radius: 16px; padding: 40px; box-shadow: 0 4px 24px rgba(31,107,107,0.08); border: 1px solid var(--border); animation: slideIn 0.4s ease; }
+  @keyframes slideIn { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+  .step-num { display: inline-block; background: var(--pale-teal); color: var(--dark-teal); font-size: 12px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; padding: 4px 12px; border-radius: 20px; margin-bottom: 16px; }
+  .card h2 { font-family: 'Playfair Display', serif; font-size: 1.5rem; color: var(--dark-teal); margin-bottom: 10px; line-height: 1.3; }
+  .card p.sub { color: var(--gray); font-size: 0.95rem; margin-bottom: 28px; line-height: 1.6; font-weight: 300; }
+  .options { display: flex; flex-direction: column; gap: 12px; }
+  .option-btn { background: white; border: 2px solid var(--border); border-radius: 12px; padding: 16px 20px; text-align: left; cursor: pointer; font-family: 'DM Sans', sans-serif; font-size: 0.95rem; color: var(--text); transition: all 0.2s; display: flex; align-items: center; gap: 12px; font-weight: 400; }
+  .option-btn:hover { border-color: var(--mid-teal); background: var(--pale-teal); transform: translateX(4px); }
+  .option-btn.selected { border-color: var(--dark-teal); background: var(--pale-teal); }
+  .option-icon { width: 36px; height: 36px; background: var(--pale-teal); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 18px; flex-shrink: 0; }
+  .nav { display: flex; justify-content: space-between; margin-top: 32px; gap: 12px; }
+  .btn-back { background: none; border: 2px solid var(--border); color: var(--gray); padding: 12px 28px; border-radius: 10px; cursor: pointer; font-family: 'DM Sans', sans-serif; font-size: 0.95rem; font-weight: 500; transition: all 0.2s; }
+  .btn-back:hover { border-color: var(--mid-teal); color: var(--dark-teal); }
+  .btn-next { background: linear-gradient(135deg, var(--dark-teal), var(--mid-teal)); color: white; border: none; padding: 14px 36px; border-radius: 10px; cursor: pointer; font-family: 'DM Sans', sans-serif; font-size: 0.95rem; font-weight: 600; transition: all 0.2s; box-shadow: 0 4px 16px rgba(31,107,107,0.25); margin-left: auto; }
+  .btn-next:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(31,107,107,0.35); }
+  .btn-next:disabled { opacity: 0.4; cursor: not-allowed; transform: none; }
+  .result-card { background: white; border-radius: 16px; padding: 40px; box-shadow: 0 4px 24px rgba(31,107,107,0.08); border: 1px solid var(--border); text-align: center; animation: slideIn 0.5s ease; }
+  .semaforo { width: 100px; height: 100px; border-radius: 50%; margin: 0 auto 24px; display: flex; align-items: center; justify-content: center; font-size: 42px; box-shadow: 0 8px 32px rgba(0,0,0,0.15); animation: pulse 2s infinite; }
+  @keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.05); } }
+  .semaforo.verde { background: linear-gradient(135deg, #22c55e, #16a34a); }
+  .semaforo.amarillo { background: linear-gradient(135deg, #f59e0b, #d97706); }
+  .semaforo.rojo { background: linear-gradient(135deg, #ef4444, #dc2626); }
+  .result-title { font-family: 'Playfair Display', serif; font-size: 1.8rem; color: var(--dark-teal); margin-bottom: 12px; }
+  .result-sub { color: var(--gray); font-size: 0.95rem; line-height: 1.7; max-width: 480px; margin: 0 auto 32px; font-weight: 300; }
+  .steps-list { text-align: left; background: var(--pale-teal); border-radius: 12px; padding: 24px; margin-bottom: 32px; }
+  .steps-list h3 { font-size: 13px; letter-spacing: 2px; text-transform: uppercase; color: var(--dark-teal); font-weight: 600; margin-bottom: 16px; }
+  .step-item { display: flex; gap: 12px; margin-bottom: 12px; align-items: flex-start; }
+  .step-dot { width: 24px; height: 24px; background: var(--dark-teal); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 600; flex-shrink: 0; margin-top: 1px; }
+  .step-text { font-size: 0.9rem; line-height: 1.5; color: var(--text); }
+  .contact-section { border-top: 1px solid var(--border); padding-top: 28px; margin-top: 28px; }
+  .contact-title { font-family: 'Playfair Display', serif; font-size: 1.2rem; color: var(--dark-teal); margin-bottom: 8px; }
+  .contact-sub { font-size: 0.88rem; color: var(--gray); margin-bottom: 20px; font-weight: 300; }
+  .contact-buttons { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+  .btn-whatsapp { background: #25d366; color: white; border: none; padding: 14px 28px; border-radius: 10px; cursor: pointer; font-family: 'DM Sans', sans-serif; font-size: 0.95rem; font-weight: 600; display: flex; align-items: center; gap: 8px; transition: all 0.2s; text-decoration: none; box-shadow: 0 4px 16px rgba(37,211,102,0.3); }
+  .btn-whatsapp:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(37,211,102,0.4); }
+  .btn-email { background: white; color: var(--dark-teal); border: 2px solid var(--dark-teal); padding: 14px 28px; border-radius: 10px; cursor: pointer; font-family: 'DM Sans', sans-serif; font-size: 0.95rem; font-weight: 600; display: flex; align-items: center; gap: 8px; transition: all 0.2s; text-decoration: none; }
+  .btn-email:hover { background: var(--pale-teal); transform: translateY(-2px); }
+  .disclaimer { margin-top: 28px; font-size: 0.78rem; color: #94a3a8; line-height: 1.6; font-style: italic; }
+  .restart-btn { margin-top: 16px; background: none; border: none; color: var(--mid-teal); cursor: pointer; font-family: 'DM Sans', sans-serif; font-size: 0.88rem; text-decoration: underline; font-weight: 500; }
+  @media (max-width: 600px) { .hero h1 { font-size: 1.8rem; } .card { padding: 28px 20px; } .result-card { padding: 28px 20px; } header { padding: 16px 20px; } }
+</style>
+</head>
+<body>
+<header>
+  <div class="logo-block">
+    <div class="logo-icon">RB</div>
+    <div class="logo-text"><strong>RB</strong><span>Estudio Jurídico</span></div>
+  </div>
+</header>
+<div class="hero">
+  <h1>¿Tu obra social o prepaga<br>te negó una prestación?</h1>
+  <p>Respondé estas preguntas y en menos de 2 minutos te decimos si estás listo para iniciar un amparo de salud.</p>
+</div>
+<div class="container"><div id="app"></div></div>
+<script>
+const questions = [
+  { id: 'tipo_cobertura', title: '¿Qué tipo de cobertura tenés?', sub: 'Esto determina qué leyes aplican a tu caso.', options: [ { value: 'obra_social', label: 'Obra social', icon: '🏥' }, { value: 'prepaga', label: 'Prepaga', icon: '💳' }, { value: 'pami', label: 'PAMI', icon: '👴' }, { value: 'no_se', label: 'No estoy seguro/a', icon: '🤔' } ] },
+  { id: 'que_negaron', title: '¿Qué te negaron?', sub: 'Seleccioná la opción que mejor describe tu situación.', options: [ { value: 'medicacion', label: 'Medicación o tratamiento médico', icon: '💊' }, { value: 'cirugia', label: 'Cirugía o procedimiento', icon: '🩺' }, { value: 'discapacidad', label: 'Prestación por discapacidad (rehabilitación, colegio, acompañante)', icon: '♿' }, { value: 'otro', label: 'Otro (estudios, consultas, internación)', icon: '📋' } ] },
+  { id: 'prescripcion', title: '¿Tenés prescripción médica?', sub: 'Es decir, ¿un médico te indicó por escrito lo que te negaron?', options: [ { value: 'si', label: 'Sí, tengo receta o indicación escrita', icon: '✅' }, { value: 'verbal', label: 'Me lo indicaron verbalmente pero no tengo papel', icon: '🗣️' }, { value: 'no', label: 'No tengo indicación médica todavía', icon: '❌' } ] },
+  { id: 'negativa_escrita', title: '¿Tenés la negativa por escrito?', sub: 'Una carta, mail, o constancia de que te rechazaron la prestación.', options: [ { value: 'si', label: 'Sí, me dieron algo escrito o por mail', icon: '📄' }, { value: 'no_pero_testigos', label: 'No, pero lo rechazaron verbalmente y tengo testigos', icon: '👥' }, { value: 'no', label: 'No tengo nada, solo me dijeron que no por teléfono', icon: '📵' } ] },
+  { id: 'urgencia', title: '¿Es una situación urgente o de riesgo de salud?', sub: 'Esto impacta en la velocidad con la que actúa la Justicia.', options: [ { value: 'urgente', label: 'Sí, hay riesgo para mi salud o mi vida', icon: '🚨' }, { value: 'importante', label: 'No es urgente pero afecta mi calidad de vida', icon: '⚠️' }, { value: 'preventivo', label: 'Es preventivo o de largo plazo', icon: '📅' } ] },
+  { id: 'reclamo_previo', title: '¿Ya hiciste algún reclamo?', sub: 'Aunque no es obligatorio, suma mucho al expediente.', options: [ { value: 'si_formal', label: 'Sí, presenté nota o carta documento', icon: '📮' }, { value: 'si_informal', label: 'Sí, llamé o fui en persona a reclamar', icon: '📞' }, { value: 'no', label: 'No hice ningún reclamo todavía', icon: '❌' } ] }
+];
+const scoring = { tipo_cobertura: { obra_social: 2, prepaga: 2, pami: 2, no_se: 1 }, que_negaron: { medicacion: 3, cirugia: 3, discapacidad: 3, otro: 2 }, prescripcion: { si: 3, verbal: 1, no: 0 }, negativa_escrita: { si: 3, no_pero_testigos: 1, no: 0 }, urgencia: { urgente: 3, importante: 2, preventivo: 1 }, reclamo_previo: { si_formal: 2, si_informal: 1, no: 0 } };
+let current = 0; let answers = {};
+function getScore() { let total = 0; for (const [key, val] of Object.entries(answers)) { total += (scoring[key]?.[val] ?? 0); } return total; }
+function getResult() { const score = getScore(); const pct = score / 16; if (pct >= 0.65) { return { color: 'verde', emoji: '✅', title: 'Tenés buenas chances', sub: 'Tu caso tiene elementos sólidos para iniciar un amparo de salud. La combinación de prescripción médica, negativa documentada y urgencia son los pilares que los jueces más valoran. Te recomendamos consultar con un abogado cuanto antes para analizar los detalles.', steps: ['Reuní toda la documentación: recetas, historial médico, negativa escrita.', 'Solicitá turno con nuestro estudio para una consulta inicial.', 'Presentaremos una medida cautelar para que te den la prestación mientras se resuelve el amparo.', 'En muchos casos se resuelve en días sin llegar a juicio.'] }; } else if (pct >= 0.35) { return { color: 'amarillo', emoji: '⚠️', title: 'Tu caso tiene posibilidades', sub: 'Hay elementos a favor, pero también algunas cuestiones que conviene reforzar antes de iniciar un amparo. Con la documentación correcta y una estrategia bien armada, las chances mejoran considerablemente.', steps: ['Conseguí la negativa por escrito de tu obra social o prepaga.', 'Pedile al médico que te dé la indicación por escrito.', 'Hacé un reclamo formal por nota antes de ir a la Justicia.', 'Consultá con nuestro estudio para evaluar el mejor camino.'] }; } else { return { color: 'rojo', emoji: '🔴', title: 'Necesitás fortalecer tu caso', sub: 'Por ahora faltan algunos elementos clave para un amparo exitoso. Pero eso no significa que no tengas derechos: hay pasos previos que podés dar para mejorar tu situación y que el caso quede sólido.', steps: ['Consultá a un médico y conseguí la indicación por escrito.', 'Presentá un reclamo formal ante la obra social o prepaga.', 'Guardá registro de todas las comunicaciones (mails, WhatsApp, etc.).', 'Hablá con nuestro estudio para evaluar opciones alternativas.'] }; } }
+function buildMessage() { const labels = { tipo_cobertura: { obra_social: 'Obra social', prepaga: 'Prepaga', pami: 'PAMI', no_se: 'No sé' }, que_negaron: { medicacion: 'Medicación/tratamiento', cirugia: 'Cirugía', discapacidad: 'Prestación por discapacidad', otro: 'Otro' }, prescripcion: { si: 'Sí tiene prescripción', verbal: 'Solo verbal', no: 'Sin prescripción' }, negativa_escrita: { si: 'Tiene negativa escrita', no_pero_testigos: 'Verbal con testigos', no: 'Sin constancia' }, urgencia: { urgente: 'Urgente (riesgo de salud)', importante: 'Importante', preventivo: 'Preventivo' }, reclamo_previo: { si_formal: 'Reclamo formal', si_informal: 'Reclamo informal', no: 'Sin reclamo previo' } }; const result = getResult(); const lines = ['Hola, acabo de hacer el diagnóstico en la web de RB Estudio Jurídico.', '', '*Mi situación:*', '• Cobertura: ' + (labels.tipo_cobertura[answers.tipo_cobertura] || '-'), '• Me negaron: ' + (labels.que_negaron[answers.que_negaron] || '-'), '• Prescripción: ' + (labels.prescripcion[answers.prescripcion] || '-'), '• Negativa escrita: ' + (labels.negativa_escrita[answers.negativa_escrita] || '-'), '• Urgencia: ' + (labels.urgencia[answers.urgencia] || '-'), '• Reclamo previo: ' + (labels.reclamo_previo[answers.reclamo_previo] || '-'), '', '*Resultado: ' + result.title + '*', '', 'Quisiera hablar con un abogado para analizar mi caso. ¿Cuándo podemos coordinar?']; return encodeURIComponent(lines.join('\n')); }
+function buildEmail() { const result = getResult(); const subject = encodeURIComponent('Consulta amparo de salud - ' + result.title); const body = encodeURIComponent('Estimado equipo de RB Estudio Jurídico,\n\nRealicé el diagnóstico en su web y quisiera consultar sobre mi caso.\n\nResultado obtenido: ' + result.title + '\n\nQuedo a disposición para coordinar una consulta.\n\nSaludos cordiales.'); return 'mailto:consultas@rbestudiojco.com?subject=' + subject + '&body=' + body; }
+function render() { const app = document.getElementById('app'); if (current === questions.length) { const result = getResult(); const waMsg = buildMessage(); app.innerHTML = '<div class="result-card"><div class="semaforo ' + result.color + '">' + result.emoji + '</div><h2 class="result-title">' + result.title + '</h2><p class="result-sub">' + result.sub + '</p><div class="steps-list"><h3>Próximos pasos recomendados</h3>' + result.steps.map((s, i) => '<div class="step-item"><div class="step-dot">' + (i+1) + '</div><div class="step-text">' + s + '</div></div>').join('') + '</div><div class="contact-section"><h3 class="contact-title">¿Querés que un abogado analice tu caso?</h3><p class="contact-sub">Contanos tu caso y te respondemos a la brevedad.</p><div class="contact-buttons"><a class="btn-whatsapp" href="https://wa.me/5493435139845?text=' + waMsg + '" target="_blank"><svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>Escribir por WhatsApp</a><a class="btn-email" href="' + buildEmail() + '"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>Enviar un mail</a></div></div><p class="disclaimer">* Este diagnóstico es orientativo y no constituye asesoramiento legal. Cada caso es único. La consulta con un abogado es el único modo de evaluar tu situación con precisión.</p><button class="restart-btn" onclick="restartQuiz()">↩ Hacer el diagnóstico de nuevo</button></div>'; return; }
+const q = questions[current]; const pct = Math.round((current / questions.length) * 100); app.innerHTML = '<div class="progress-wrap"><div class="progress-label"><span>Pregunta ' + (current + 1) + ' de ' + questions.length + '</span><span>' + pct + '% completado</span></div><div class="progress-bar"><div class="progress-fill" style="width:' + pct + '%"></div></div></div><div class="card"><div class="step-num">Paso ' + (current + 1) + '</div><h2>' + q.title + '</h2><p class="sub">' + q.sub + '</p><div class="options">' + q.options.map(opt => '<button class="option-btn ' + (answers[q.id] === opt.value ? 'selected' : '') + '" onclick="selectOption(\'' + q.id + '\', \'' + opt.value + '\')"><div class="option-icon">' + opt.icon + '</div>' + opt.label + '</button>').join('') + '</div><div class="nav">' + (current > 0 ? '<button class="btn-back" onclick="goBack()">← Atrás</button>' : '<div></div>') + '<button class="btn-next" onclick="goNext()" ' + (answers[q.id] ? '' : 'disabled') + '>' + (current === questions.length - 1 ? 'Ver mi diagnóstico →' : 'Siguiente →') + '</button></div></div>'; }
+function selectOption(id, value) { answers[id] = value; render(); }
+function goNext() { if (answers[questions[current].id]) { current++; render(); window.scrollTo({ top: 0, behavior: 'smooth' }); } }
+function goBack() { if (current > 0) { current--; render(); } }
+function restartQuiz() { current = 0; answers = {}; render(); window.scrollTo({ top: 0, behavior: 'smooth' }); }
+render();
+</script>
+</body>
+</html>
